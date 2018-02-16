@@ -16,13 +16,14 @@ var questionFiveRight = 'Cars';
 var count = 30;
 var right = 0;
 var wrong = 0;
+var input;
 
 $("#begin").click(firstQuestion);
-
+console.log(questionOneAnswers[1])
 function firstQuestion() {
     $("#begin").empty();
     $('#question').html(questionOne)
-    
+
     for (var i = 0; i < questionOneAnswers.length; i++) {
         var a = $("<button>");
         a.addClass("choices");
@@ -30,18 +31,21 @@ function firstQuestion() {
         a.text(questionOneAnswers[i]);
         $("#answers").append(a);
     }
+
 }
-var input = $(this).attr("data-name-one");
-if (questionOne[1] === input) {
-    right++;
-    $('#question').html('<h1> CORRECT! <h1>');
-    secondQuestion()
-}
-else {
-    wrong++;
-    $('#question').html('<h1> WRONG/OUT OF TIME! ' + questionOne[1] + ' is the right answer.<h1>')
-    secondQuestion()
-}
+$(".choices").on('click', function () {
+    input = $(this).attr("data-name-one");
+    if (questionOneAnswers[1] === input) {
+        right++;
+        $('#question').html('<h1> CORRECT! <h1>');
+        secondQuestion()
+    }
+    else {
+        wrong++;
+        $('#question').html('<h1> WRONG/OUT OF TIME! ' + questionOneAnswers[1] + ' is the right answer.<h1>')
+        secondQuestion()
+    }
+});
 
 
 
@@ -50,23 +54,23 @@ function secondQuestion() {
     $('#question').html(questionTwo)
 
     for (var i = 0; i < questionTwoAnswers.length; i++) {
-        var a = $("<button>");
-        a.addClass("choices");
-        a.attr("data-name-two", questionTwoAnswers[i]);
-        a.text(questionTwoAnswers[i]);
-        $("#answers").append(a);
+        var b = $("<button>");
+        b.addClass("choices");
+        b.attr("data-name-two", questionTwoAnswers[i]);
+        b.text(questionTwoAnswers[i]);
+        $("#answers").append(b);
     }
 }
-var input = $(this).attr("data-name-two");
+input = $(this).attr("data-name-two");
 
-if (questionTwo[0] === input) {
+if (questionTwoAnswers[0] === input) {
     right++
     $('#question').html('<h1> CORRECT! <h1>');
     threeQuestion()
 }
 else {
     wrong++;
-    $('#question').html('<h1> WRONG/OUT OF TIME! ' + questionTwo[0] + ' is the right answer.<h1>')
+    $('#question').html('<h1> WRONG/OUT OF TIME! ' + questionTwoAnswers[0] + ' is the right answer.<h1>')
     threeQuestion()
 }
 
@@ -77,23 +81,23 @@ function threeQuestion() {
     $('#question').html(questionThree)
 
     for (var i = 0; i < questionThreeAnswers.length; i++) {
-        var a = $("<button>");
-        a.addClass("choices");
-        a.attr("data-name-three", questionThreeAnswers[i]);
-        a.text(questionThreeAnswers[i]);
-        $("#answers").append(a);
+        var c = $("<button>");
+        c.addClass("choices");
+        c.attr("data-name-three", questionThreeAnswers[i]);
+        c.text(questionThreeAnswers[i]);
+        $("#answers").append(c);
     }
 }
-var input = $(this).attr("data-name-three");
+input = $(this).attr("data-name-three");
 
-if (questionThree[2] === input) {
+if (questionThreeAnswers[2] === input) {
     right++;
     $('#question').html('<h1> CORRECT! <h1>')
     fourQuestion()
 }
 else {
     wrong++;
-    $('#question').html('<h1> WRONG/OUT OF TIME! ' + questionThree[2] + ' is the right answer.<h1>')
+    $('#question').html('<h1> WRONG/OUT OF TIME! ' + questionThreeAnswers[2] + ' is the right answer.<h1>')
     fourQuestion()
 }
 
@@ -104,23 +108,23 @@ function fourQuestion() {
     $('#question').html(questionFour)
 
     for (var i = 0; i < questionFourAnswers.length; i++) {
-        var a = $("<button>");
-        a.addClass("choices");
-        a.attr("data-name-four", questionFourAnswers[i]);
-        a.text(questionFourAnswers[i]);
-        $("#answers").append(a);
+        var d = $("<button>");
+        d.addClass("choices");
+        d.attr("data-name-four", questionFourAnswers[i]);
+        d.text(questionFourAnswers[i]);
+        $("#answers").append(d);
     }
 }
-var input = $(this).attr("data-name-four");
+input = $(this).attr("data-name-four");
 
-if (questionFour[0] === input) {
+if (questionFourAnswers[0] === input) {
     right++;
     $('#question').html('<h1> CORRECT! <h1>')
     fiveQuestion()
 }
 else {
     wrong++;
-    $('#question').html('<h1> WRONG/OUT OF TIME! ' + questionFour[0] + ' is the right answer.<h1>')
+    $('#question').html('<h1> WRONG/OUT OF TIME! ' + questionFourAnswers[0] + ' is the right answer.<h1>')
     fiveQuestion()
 }
 
@@ -131,22 +135,24 @@ function fiveQuestion() {
     $('#question').html(questionFive)
 
     for (var i = 0; i < questionFiveAnswers.length; i++) {
-        var a = $("<button>");
-        a.addClass("choices");
-        a.attr("data-name-five", questionFiveAnswers[i]);
-        a.text(questionFiveAnswers[i]);
-        $("#answers").append(a);
+        var e = $("<button>");
+        e.addClass("choices");
+        e.attr("data-name-five", questionFiveAnswers[i]);
+        e.text(questionFiveAnswers[i]);
+        $("#answers").append(e);
     }
 }
-var input = $(this).attr("data-name-five");
+input = $(this).attr("data-name-five");
 
-if (questionFive[3] === input) {
+if (questionFiveAnswers[3] === input) {
     right++;
     $('#question').html('<h1> CORRECT! <h1>')
+    displayScore()
 }
 else {
     wrong++;
-    $('#question').html('<h1> WRONG/OUT OF TIME! ' + questionFive[3] + ' is the right answer.<h1>')
+    $('#question').html('<h1> WRONG/OUT OF TIME! ' + questionFiveAnswers[3] + ' is the right answer.<h1>')
+    displayScore()
 }
 
 
